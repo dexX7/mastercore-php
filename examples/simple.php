@@ -14,7 +14,7 @@ $password = 'your-rpc-password';
 $host     = '127.0.0.1';
 $port     = '18333';
 
-$connection = sprintf("%s://%s:%s@%s:%d", $schema, $username, $password, $host, $port);
+$connection = sprintf("%s://%s:%s@%s:%s", $schema, $username, $password, $host, $port);
 
 // Initialize the Master Core client
 $mastercore = new MasterCoreRpc($connection);
