@@ -1,0 +1,23 @@
+{
+    "name": "mastercoin/mastercore-php",
+    "homepage": "https://github.com/dexX7/mastercore-php",
+    "type": "library",
+    "description": "RPC wrapper for the JSON-RPC API interface of Master Core",
+    "keywords": ["bitcoin", "mastercoin", "mastercore", "rpc"],
+    "authors": [
+        {
+            "name": "dexX7",
+            "email": "dexx@bitwatch.co"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mastercoin\\MasterCore\\": "src/MasterCore/",
+            "Mastercoin\\MasterCore\\Examples\\": "examples/"
+        }
+    },
+    "require": {
+        "nbobtc/bitcoind-php": "1.0.*@dev"
+    },
+    "minimum-stability": "dev"
+}
