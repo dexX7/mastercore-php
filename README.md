@@ -43,12 +43,12 @@ And [execute](https://getcomposer.org/doc/01-basic-usage.md#installing-dependenc
 php composer.phar install
 ```
 
-To create mastercore-php as a **new project**, execute the following command:
+To create mastercore-php as a new **project**, execute the following command:
 ```bash
-php composer.phar create-project mastercoin/mastercore-php project_dir
+php composer.phar create-project mastercoin/mastercore-php
 ```
 
-Based on your system `php composer.phar` and `composer` might be used synonymously.
+Based on your system `composer` and `php composer.phar` might be used synonymously.
 
 Dependencies
 ------------
