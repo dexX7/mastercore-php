@@ -1,5 +1,15 @@
 <?php
 
+/*
+ * Example: simple.php
+ *
+ * To run this example, please update the RPC connection information.
+ * The autoload.php include may need an adjustment based on your file structure.
+ *
+ *
+ * This file is part of the mastercoin/mastercore-php library.
+ */
+ 
 namespace Mastercoin\MasterCore\Examples;
 
 use Mastercoin\MasterCore\MasterCoreRpc;
@@ -9,8 +19,8 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 // RPC connection data
 $schema   = 'http';
-$username = 'your-rpc-username';
-$password = 'your-rpc-password';
+$username = 'your_rpc_username';
+$password = 'your_rpc_password';
 $host     = '127.0.0.1';
 $port     = '18333';
 

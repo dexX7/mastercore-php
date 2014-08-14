@@ -18,7 +18,5 @@
             "Mastercoin\\MasterCore\\": "src/MasterCore/",
             "Mastercoin\\MasterCore\\Examples\\": "examples/"
         }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
