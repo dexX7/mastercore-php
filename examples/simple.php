@@ -44,5 +44,6 @@ var_dump($mastercore->listproperties_MP());
 var_dump($mastercore->getcrowdsale_MP(2147483653, true));
 var_dump($mastercore->getactivecrowdsales_MP());
 var_dump($mastercore->getactivedexsells_MP());
+var_dump($mastercore->getgrants_MP(2147483661));
 
 ?>

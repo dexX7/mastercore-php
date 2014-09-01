@@ -8,6 +8,9 @@ namespace Mastercoin\MasterCore;
  * Based on API as published on 2014-08-07 (commit: 62f036c524efdea53d72e31e2d6232a11ba123ab)
  * @link https://github.com/mastercoin-MSC/mastercore/blob/62f036c524/doc/apidocumentation.md
  *
+ * As well as undocumented methods based on 2014-09-01 (commit: c60cc3428164a36260171182d65835c75646118a)
+ * @link https://github.com/mastercoin-MSC/mastercore/blob/c60cc3428164a36260171182d65835c75646118a/src/rpcserver.h
+ *
  * @author dexX7 <dexx@bitwatch.co>
  * @link https://github.com/dexX7/mastercore-php
  */
@@ -137,4 +140,13 @@ interface MasterCoreInterface
      * @return array
      */
     public function getactivedexsells_MP();
+
+    /**
+     * Gets grants and revokes of a managed property
+     *
+     * @param int $property Identifier of the property
+     *
+     * @return \stdClass The grants and revokes
+     */
+    public function getgrants_MP($property);
 }

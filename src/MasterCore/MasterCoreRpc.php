@@ -12,6 +12,9 @@ use Nbobtc\Bitcoind\Client as RpcClient;
  * Based on API as published on 2014-08-07 (commit: 62f036c524efdea53d72e31e2d6232a11ba123ab)
  * @link https://github.com/mastercoin-MSC/mastercore/blob/62f036c524/doc/apidocumentation.md
  *
+ * As well as undocumented methods based on 2014-09-01 (commit: c60cc3428164a36260171182d65835c75646118a)
+ * @link https://github.com/mastercoin-MSC/mastercore/blob/c60cc3428164a36260171182d65835c75646118a/src/rpcserver.h
+ *
  * @author dexX7 <dexx@bitwatch.co>
  * @link https://github.com/dexX7/mastercore-php
  */
@@ -144,6 +147,15 @@ class MasterCoreRpc extends Bitcoind implements MasterCoreInterface, BitcoindInt
     public function getactivedexsells_MP()
     {
         $response = $this->sendRequest('getactivedexsells_MP', array());
+        return $response->result;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getgrants_MP($property)
+    {
+        $response = $this->sendRequest('getgrants_MP', array($property));
         return $response->result;
     }
 }
