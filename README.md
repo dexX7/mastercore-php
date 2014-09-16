@@ -33,7 +33,7 @@ To use this project as a **library**, create or edit the file `composer.json` an
 ```json
 {
     "require": {
-        "mastercoin/mastercore-php": "~0.2"
+        "mastercoin/mastercore-php": "~1.0"
     }
 }
 ```

@@ -5,14 +5,12 @@ namespace Mastercoin\MasterCore;
 /**
  * Mirrors the JSON-RPC API interface of Master Core
  *
- * Based on API as published on 2014-08-07 (commit: 62f036c524efdea53d72e31e2d6232a11ba123ab)
- * @link https://github.com/mastercoin-MSC/mastercore/blob/62f036c524/doc/apidocumentation.md
- *
- * As well as undocumented methods based on 2014-09-01 (commit: c60cc3428164a36260171182d65835c75646118a)
- * @link https://github.com/mastercoin-MSC/mastercore/blob/c60cc3428164a36260171182d65835c75646118a/src/rpcserver.h
+ * Based on Master Core v0.0.7:
+ * @link https://github.com/mastercoin-MSC/mastercore/releases/tag/v0.0.7
+ * @link https://github.com/mastercoin-MSC/mastercore/blob/0.0.7/doc/apidocumentation.md
  *
  * @author dexX7 <dexx@bitwatch.co>
- * @link https://github.com/dexX7/mastercore-php
+ * @link   https://github.com/dexX7/mastercore-php
  */
 interface MasterCoreInterface
 {
@@ -22,7 +20,7 @@ interface MasterCoreInterface
      * @param string  $sender    Wallet address with sufficient balance to spent from
      * @param string  $receiver  Bitcoin address of the recipient
      * @param int     $property  Identifier of the property to send
-     * @param float   $amount    Amount to send
+     * @param string  $amount    Amount to send
      *
      * @return string
      */
@@ -33,7 +31,7 @@ interface MasterCoreInterface
      *
      * @param string $sender   Wallet address with sufficient balance to spent from
      * @param int    $property Identifier of the property to send
-     * @param float  $amount   Total amount to distribute
+     * @param string $amount   Total amount to distribute
      *
      * @return string
      */
@@ -79,19 +77,7 @@ interface MasterCoreInterface
     /**
      * Lists wallet transactions filtered by counts and block boundaries
      *
-     * @param int $count      Number of transactions to return
-     * @param int $skip       Number of transactions to skip
-     * @param int $startblock Only show transactions at or after this block height
-     * @param int $endblock   Only show transactions at or before this block height
-     *
-     * @return array
-     */
-    public function listtransactions_MP($count = 10, $skip = 0, $startblock = 0, $endblock = 999999);
-
-    /**
-     * Lists history of wallet transactions filtered by address, counts and block boundaries
-     *
-     * @param string $address    Bitcoin address to filter or "*" for all wallet addresses
+     * @param string $filter     Bitcoin address to filter or "*" for all wallet addresses
      * @param int    $count      Number of transactions to return
      * @param int    $skip       Number of transactions to skip
      * @param int    $startblock Only show transactions at or after this block height
@@ -99,7 +85,7 @@ interface MasterCoreInterface
      *
      * @return array
      */
-    public function searchtransactions_MP($address = '*', $count = 10, $skip = 0, $startblock = 0, $endblock = 999999);
+    public function listtransactions_MP($filter = '*', $count = 10, $skip = 0, $startblock = 0, $endblock = 999999);
 
     /**
      * Returns information about a Master Protocol property
@@ -149,4 +135,25 @@ interface MasterCoreInterface
      * @return \stdClass The grants and revokes
      */
     public function getgrants_MP($property);
+
+    /**
+     * Lists all Master Protocol transactions in a block
+     *
+     * @param int $block The block height or index
+     *
+     * @return array The transaction hashes
+     */
+    public function listblocktransactions_MP($block);
+
+    /**
+     * Creates and broadcasts a Master Protocol transaction
+     *
+     * @param string  $sender          Wallet address with sufficient balance to send from
+     * @param string  $rawtransaction  Hex-encoded raw transaction
+     * @param string  $reference       Bitcoin address of transaction reference - can be empty
+     * @param string  $redeemer        Public key of the one who can redeem multisig the dust - defaults to sender
+     *
+     * @return string The transaction hash
+     */
+    public function sendrawtx_MP($sender, $rawtransaction, $reference = null, $redeemer = null);
 }

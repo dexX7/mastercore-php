@@ -9,14 +9,12 @@ use Nbobtc\Bitcoind\Client as RpcClient;
 /**
  * RPC wrapper for the JSON-RPC API interface of Master Core
  *
- * Based on API as published on 2014-08-07 (commit: 62f036c524efdea53d72e31e2d6232a11ba123ab)
- * @link https://github.com/mastercoin-MSC/mastercore/blob/62f036c524/doc/apidocumentation.md
- *
- * As well as undocumented methods based on 2014-09-01 (commit: c60cc3428164a36260171182d65835c75646118a)
- * @link https://github.com/mastercoin-MSC/mastercore/blob/c60cc3428164a36260171182d65835c75646118a/src/rpcserver.h
+ * Based on Master Core v0.0.7:
+ * @link https://github.com/mastercoin-MSC/mastercore/releases/tag/v0.0.7
+ * @link https://github.com/mastercoin-MSC/mastercore/blob/0.0.7/doc/apidocumentation.md
  *
  * @author dexX7 <dexx@bitwatch.co>
- * @link https://github.com/dexX7/mastercore-php
+ * @link   https://github.com/dexX7/mastercore-php
  */
 class MasterCoreRpc extends Bitcoind implements MasterCoreInterface, BitcoindInterface
 {
@@ -90,18 +88,9 @@ class MasterCoreRpc extends Bitcoind implements MasterCoreInterface, BitcoindInt
     /**
      * @inheritdoc
      */
-    public function listtransactions_MP($count = 10, $skip = 0, $startblock = 0, $endblock = 999999)
+    public function listtransactions_MP($filter = '*', $count = 10, $skip = 0, $startblock = 0, $endblock = 999999)
     {
-        $response = $this->sendRequest('listtransactions_MP', array($count, $skip, $startblock, $endblock));
-        return $response->result;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function searchtransactions_MP($address = '*', $count = 10, $skip = 0, $startblock = 0, $endblock = 999999)
-    {
-        $response = $this->sendRequest('searchtransactions_MP', array($address, $count, $skip, $startblock, $endblock));
+        $response = $this->sendRequest('listtransactions_MP', array($filter, $count, $skip, $startblock, $endblock));
         return $response->result;
     }
 
@@ -156,6 +145,24 @@ class MasterCoreRpc extends Bitcoind implements MasterCoreInterface, BitcoindInt
     public function getgrants_MP($property)
     {
         $response = $this->sendRequest('getgrants_MP', array($property));
+        return $response->result;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function listblocktransactions_MP($block)
+    {
+        $response = $this->sendRequest('listblocktransactions_MP', array($block));
+        return $response->result;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function sendrawtx_MP($sender, $rawtransaction, $reference = null, $redeemer = null)
+    {
+        $response = $this->sendRequest('sendrawtx_MP', array($sender, $rawtransaction, $reference, $redeemer));
         return $response->result;
     }
 }
