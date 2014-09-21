@@ -2,6 +2,8 @@
 
 namespace Mastercoin\MasterCore;
 
+use Nbobtc\Bitcoind\BitcoindInterface;
+
 /**
  * Mirrors the JSON-RPC API interface of Master Core
  *
@@ -12,7 +14,7 @@ namespace Mastercoin\MasterCore;
  * @author dexX7 <dexx@bitwatch.co>
  * @link   https://github.com/dexX7/mastercore-php
  */
-interface MasterCoreInterface
+interface MasterCoreInterface extends BitcoindInterface
 {
     /**
      * Creates and broadcasts a Simple Send transaction
